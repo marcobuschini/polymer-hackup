@@ -1,0 +1,64 @@
+<link rel="import" href="components/firebase-element-master/firebase-element.html">
+<link rel="import" href="components/paper-input/paper-input.html">
+
+<polymer-element name="login-form">
+  <template>
+    <style>
+    :host {
+      display: block;
+      position: relative;
+      background-color: white;
+      padding: 20px;
+      width: 100%;
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+    .card-header {
+      margin-bottom: 10px;
+    }
+    polyfill-next-selector { content: '.card-header h2'; }
+    .card-header ::content h2 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 300;
+    }
+    polyfill-next-selector { content: '.card-header img'; }
+    .card-header ::content img {
+      width: 70px;
+      border-radius: 50%;
+      margin: 10px;
+    }
+    core-icon-button {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      color: #636363;
+    }
+    :host([favorite]) core-icon-button {
+      color: #da4336;
+    }
+    </style>
+    <div class="card-header" layout horizontal center>
+
+      <content select="img"></content>
+      <content select="h2"></content>
+
+    </div>
+
+    <paper-input id="user" label="User name" value="{{username}}"></paper-input>
+    <paper-button on-tap="{{login}}">Login</paper-button>
+
+  </template>
+  <script>
+  Polymer({
+    login: function() {
+        var d = new Date();
+        d.setTime(d.getTime() + (30*24*60*60*1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = "username=" + this.username + "; " + expires;
+        document.cookie = "userid="+ Math.floor(Math.random()*5+1);
+        window.location = "index.html";
+      }
+  });
+  </script>
+</polymer-element>
