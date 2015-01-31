@@ -4,14 +4,17 @@
 
   <title>firebase-element</title>
 
-  <script src="webcomponentsjs/webcomponents.js"></script>
+  <script src="components/webcomponentsjs/webcomponents.js"></script>
 
   <link rel="import" href="components/firebase-element-master/firebase-element.html">
+  <link rel="import" href="components/paper-input/paper-input.html">
 
 </head>
 <body unresolved>
 
   <template is="auto-binding">
+
+    <paper-input label="prova"></paper-input>
 
     <firebase-element id="base" on-data-change="{{dataChange}}" data="{{data}}" location="https://polymer-hackup.firebaseio.com/" log></firebase-element>
 
