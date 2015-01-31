@@ -45,8 +45,6 @@
       <content select="h2"></content>
 
     </div>
-
-    <paper-input id="user" label="User name" value="{{username}}"></paper-input>
     <paper-input id="text" label="Message" value="{{text}}"></paper-input>
 
     <core-icon-button
@@ -58,14 +56,39 @@
   </template>
   <script>
   Polymer({
+      readCookie : function (name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+          var c = ca[i];
+          while (c.charAt(0)==' ') c = c.substring(1,c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+      },
+      avatars : {1:"images/avatar-03.svg",
+          2:"images/avatar-04.svg",
+          3:"images/avatar-05.svg",
+          4:"images/avatar-06.svg",
+          5:"images/avatar-07.svg"},
     sendMessage: function() {
-      var message = {};
-      message.avatar = "images/avatar-03.svg";
-      message.text = this.text;
-      message.username = this.username;
-      this.$.base.push(message);
-      this.username = "";
-      this.text = "";
+      var idAvatar = this.readCookie("userid");
+      var name = this.readCookie("username");
+      if(typeof this.text !== undefined && this.text !=""
+              && typeof this.name !== undefined && this.name !== "")
+      {
+          var message = {};
+          message.avatar = this.avatars[idAvatar];
+          message.text = this.text;
+          message.username = name;
+          this.$.base.push(message);
+          this.username = "";
+          this.text = "";
+      }
+      else
+      {
+          //TODO -- error messsage
+      }
     }
   });
   </script>
