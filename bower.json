@@ -1,13 +1,29 @@
 {
-  "name": "HelloWorld",
-  "description": "",
-  "homepage": "",
-  "keywords": [
+  "name": "polymer-tutorial",
+  "version": "0.5.4",
+  "homepage": "https://github.com/Polymer/polymer-tutorial",
+  "authors": [
+    "Arthur Evans <arthure@google.com>",
+    "Rob Dodson <robdodson@google.com>",
+    "Eric Bidelman <ericbidelman@google.com>"
   ],
-  "author": "",
+  "description": "Polymer tutorial for read-only social network app",
+  "license": "MIT",
   "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ],
   "dependencies": {
-    "polymer": "Polymer/polymer#latest",
-    "paper-elements": "Polymer/paper-elements#latest"
+    "core-icon-button": "Polymer/core-icon-button#^0.5.0",
+    "font-roboto": "Polymer/font-roboto#^0.5.0",
+    "core-header-panel": "Polymer/core-header-panel#^0.5.0",
+    "core-toolbar": "Polymer/core-toolbar#^0.5.0",
+    "paper-tabs": "Polymer/paper-tabs#^0.5.0",
+    "core-ajax": "Polymer/core-ajax#^0.5.0"
   }
 }
