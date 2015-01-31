@@ -1,6 +1,7 @@
 <link rel="import" href="components/polymer/polymer.html">
 <link rel="import" href="post-service/post-service.html">
 <link rel="import" href="post-card.html">
+<link rel="import" href="components/firebase-element-master/firebase-element.html">
 
 <polymer-element name="post-list" attributes="show">
   <template>
@@ -14,8 +15,10 @@
     }
     </style>
 
-    <post-service id="service" posts="{{posts}}"></post-service>
-    
+    <!-- <post-service id="service" posts="{{posts}}"></post-service> -->
+
+    <firebase-element id="base" on-data-change="{{dataChange}}" data="{{posts}}" location="https://polymer-hackup.firebaseio.com/" log></firebase-element>
+
     <div layout vertical center>
       <template repeat="{{post in posts}}">
         <post-card
