@@ -46,6 +46,7 @@
 
     </div>
 
+    <paper-input id="user" label="User name" value="{{username}}"></paper-input>
     <paper-input id="text" label="Message" value="{{text}}"></paper-input>
 
     <core-icon-button
@@ -57,11 +58,12 @@
   </template>
   <script>
   Polymer({
-    publish: {
-      text: ""
-    },
     sendMessage: function() {
-      this.$.base.push(this.text); // il testo da scrivere
+      var message = {};
+      message.avatar = "images/avatar-03.svg";
+      message.text = this.text;
+      message.username = this.username;
+      this.$.base.push(message);
     }
   });
   </script>
